@@ -1,0 +1,28 @@
+CREATE TABLE teams(
+team_id INT PRIMARY KEY AUTO_INCREMENT,
+first_team VARCHAR(40),
+second_team VARCHAR(40),
+sport_FOREIGNKEY INT NULL,
+team_group_FOREIGNKEY INT NULL,
+FOREIGN KEY (sport_FOREIGNKEY) REFERENCES sport(sport_id),
+FOREIGN KEY (team_group_FOREIGNKEY) REFERENCES team_group(group_id)
+);
+
+CREATE TABLE team_group(
+group_id INT PRIMARY KEY AUTO_INCREMENT,
+groupName VARCHAR(40),
+group_description VARCHAR(40)
+);
+
+CREATE TABLE sport(
+sport_id INT PRIMARY KEY AUTO_INCREMENT,
+name_of_sport VARCHAR(40)
+);
+
+CREATE TABLE calendar(
+calendar_id INT PRIMARY KEY AUTO_INCREMENT,
+date DATETIME,
+place VARCHAR(45),
+teams_FOREIGNKEY INT NULL,
+FOREIGN KEY (team_FOREIGNKEY) REFERENCES teams(team_id)
+);
